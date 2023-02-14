@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>個人サイト向け 無料ホームページテンプレート tp_simple14</title>
+    <title>ひとことメモ帳</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="ここにサイト説明を入れます" />
+    <meta name="description" content="簡易的なメモ帳のアプリです。" />
     <meta
       name="keywords"
       content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５"
@@ -18,7 +18,7 @@
     <![endif]-->
   </head>
 
-  <body class="s-n">
+  <body>
     <!--小さな端末用（800px以下端末）のロゴとメニュー-->
     <div id="sh">
       <h1 class="logo">
@@ -33,7 +33,7 @@
             <a href="about.html"><span>当サイトについて</span>About</a>
           </li>
           <li>
-            <a href="works.html"><span>作品</span>Works</a>
+            <a href="works.html"><span>メモ帳</span>Memos</a>
           </li>
           <li>
             <a href="link.html"><span>リンク</span>Link</a>
@@ -47,58 +47,50 @@
 
     <div id="container">
       <div id="main">
-        <section>
-          <h2><span>Contact</span>お問い合わせ</h2>
-          <p>
-            当ページと同じ３項目のお問い合わせフォーム（自動フォーム試用版）を簡単に使えるようにセットしています。<br />
-            <span style="color: red"
-              >※当ページ（contact.html）はフォームの見本ページです。実際の自動フォームには使いませんのでご注意下さい。</span
-            >
-          </p>
-          <p>
-            <strong class="color1"
-              >■自動フォームを使う場合（※編集に入る前にご確認下さい）</strong
-            ><br />
-            あなたのメールアドレス設定と、簡単な編集だけで使えます。<a
-              href="http://template-party.com/file/formgen_manual_set2.html"
-              target="_blank"
-              >こちらのマニュアルをご覧下さい。</a
-            >
-          </p>
-          <p>
-            <strong class="color1">■自動フォームを使わない場合</strong><br />
-            テンプレートに梱包されている「form.html」「confirm.html」「finish.html」の3枚のファイルを削除して下さい。
-          </p>
+        <section id="new" class="box">
+          <h2 id="newinfo_hdr" class="close">
+            <span>Today's Schedule</span>本日の予定
+          </h2>
+          <dl id="newinfo">
+            <dt>2021/11/16</dt>
+            <dd>
+              lightbox用のjsファイルとcssファイルをCDNからの読み込みに変更。<span
+                class="newicon"
+                >NEW</span
+              >
+            </dd>
+            <dt>2017/07/03</dt>
+            <dd>tp_simple14公開。</dd>
+          </dl>
+                <div class="msg">
+                    <img src="member_picture/" width="48" height="48" alt=""/>
+                    <p>○○<span class="name">（○○）</span></p>
+                    <p class="day"><a href="view.php?id=">2021/01/01 00:00:00</a>
+                        [<a href="delete.php?id=" style="color: #F33;">削除</a>]
+                    </p>
+                </div>
+        </section>
 
-          <h3>お問い合わせフォーム</h3>
+        <section class="box">
+          <h2><span>Memo</span>メモ</h2>
 
-          <table class="ta1">
-            <tr>
-              <th>お名前※</th>
-              <td><input type="text" name="お名前" size="30" class="ws" /></td>
-            </tr>
-            <tr>
-              <th>メールアドレス※</th>
-              <td>
-                <input type="text" name="メールアドレス" size="30" class="ws" />
-              </td>
-            </tr>
-            <tr>
-              <th>お問い合わせ詳細※</th>
-              <td>
-                <textarea
-                  name="お問い合わせ詳細"
-                  cols="30"
-                  rows="10"
-                  class="wl"
-                ></textarea>
-              </td>
-            </tr>
-          </table>
-
-          <p class="c">
-            <input type="submit" value="内容を確認する" />
-          </p>
+          <h3>利用規約のご案内</h3>
+            <div id="content">
+                <div style="text-align: right"><a href="logout.php">ログアウト</a></div>
+                <form action="" method="post">
+                    <dl>
+                        <dt>○○さん、メッセージをどうぞ</dt>
+                        <dd>
+                            <textarea name="message" cols="50" rows="5"></textarea>
+                        </dd>
+                    </dl>
+                    <div>
+                        <p>
+                            <input type="submit" value="投稿する"/>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </section>
       </div>
       <!--/main-->
@@ -150,10 +142,18 @@
     </div>
     <!--/container-->
 
+    <!--更新情報の開閉処理条件設定　800px以下-->
+    <script>
+      if (OCwindowWidth() <= 800) {
+        open_close("newinfo_hdr", "newinfo");
+      }
+    </script>
+
     <!--メニューの３本バー-->
     <div id="menubar_hdr" class="close">
       <span></span><span></span><span></span>
     </div>
+
     <!--メニューの開閉処理条件設定　800px以下-->
     <script>
       if (OCwindowWidth() <= 800) {
