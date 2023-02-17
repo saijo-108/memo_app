@@ -1,5 +1,7 @@
 <?php 
 session_start();
+require('../share.php');
+
 $form = [
     // 配列の初期化
     'name' => '',
@@ -7,11 +9,6 @@ $form = [
     'password' => ''
 ];
 $error = [];
-
-// htmlspecialcharsを短くする
-function h_s($value) {
-    return htmlspecialchars($value, ENT_QUOTES);
-}
 
 // フォームが送信された時のみ、フォームの中身を確認する
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,6 +49,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // エラーが起きていなければ,セッションに＄formを記録してcheck.phpに移動する
     if (empty($error)) {
         $_SESSION['form'] = $form;
+
+        // 画像のアップロード (今日の日付を最初に入れて重複しないようにする)
+        // 画像が指定されていた時
+        if ($image['name'] !== '') {
+            $filename = date('YmdHis') . '_' . $image['name'];
+            if(!move_uploaded_file($image['tmp_name'], '../member_picture/' . $filename)) {
+                die('ファイルのアップロードに失敗しました');
+            }
+            $_SESSION['form']['image'] = $filename;
+        } else {
+            $_SESSION['form']['image'] = '';
+        }
         header('Location: check.php');
         exit();
     }
