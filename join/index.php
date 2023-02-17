@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
                     </dd>
                 </dl>
-                <div><input type="submit" value="入力内容を確認する"/></div>
+                <div class="enter"><input type="submit" value="入力内容を確認する"/></div>
             </form>
         </div>
     </div>

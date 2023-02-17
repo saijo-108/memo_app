@@ -18,7 +18,7 @@ if (isset($_SESSION['form'])) {
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>会員登録</title>
 
-	<link rel="stylesheet" href="../style.scss" />
+	<link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body>
