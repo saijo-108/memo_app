@@ -524,6 +524,16 @@ footer .pr {
 #wrap .enter {
   text-align: center;
 }
+
+#wrap .button {
+  height: 30px;
+  width: 100px;
+}
+
+#wrap .resis {
+  text-align: center;
+}
+
 /*その他
 ---------------------------------------------------------------------------*/
 .look {

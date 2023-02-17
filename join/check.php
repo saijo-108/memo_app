@@ -8,6 +8,36 @@ if (isset($_SESSION['form'])) {
 	header('Location: index.php');
 	exit();
 }
+
+// 登録するが押されたらDBに保存する
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	// DBに接続
+	$db = new mysqli('localhost', 'root', 'root', 'min_bbs2');
+	if (!$db) {
+		die($db->error);
+	}
+
+	// DBにデータを挿入
+	$stmt = $db->prepare('insert into members (name, email, password, picture) VALUES (?, ?, ?, ?)');
+	if (!$stmt) {
+		die($db->error);
+	}
+
+	// passwordはSQL上で直接見れないようにする
+	$password = password_hash($form['password'], PASSWORD_DEFAULT);
+	// bind_paramsでprepareの?に入れるものを指定(セキュリティ上直接SQL文には入れない)
+	$stmt->bind_param('ssss', $form['name'], $form['email'], $password, $form['image']);
+
+	// SQLを実行
+	$success = $stmt->execute();
+	if (!$success) {
+		die($db->error);
+	}
+
+	// セッションの中身を削除
+	unset($_SESSION['form']);
+	header('Location: thanks.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -44,7 +74,7 @@ if (isset($_SESSION['form'])) {
 							<img src="../member_picture/<?php echo h_s($form['image']) ?>" width="100" alt="" />
 					</dd>
 				</dl>
-				<div><a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a> | <input type="submit" value="登録する" /></div>
+				<div class="resis"><input type="submit" value="登録する" class="button" /> | <a href="index.php?action=rewrite">書き直す</a></div>
 			</form>
 		</div>
 
