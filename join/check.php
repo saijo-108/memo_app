@@ -12,10 +12,7 @@ if (isset($_SESSION['form'])) {
 // 登録するが押されたらDBに保存する
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// DBに接続
-	$db = new mysqli('localhost', 'root', 'root', 'min_bbs2');
-	if (!$db) {
-		die($db->error);
-	}
+	$db = dbconnect();
 
 	// DBにデータを挿入
 	$stmt = $db->prepare('insert into members (name, email, password, picture) VALUES (?, ?, ?, ?)');

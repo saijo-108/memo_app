@@ -2,13 +2,20 @@
 session_start();
 require('../share.php');
 
-$form = [
-    // 配列の初期化
-    'name' => '',
-    'email' => '',
-    'password' => ''
-];
+// 書き直し(check.php)から戻ってきた場合、$formにはデータを入れておく。それ以外は初期化する。
+if (isset($_GET['action']) && $_GET['action'] === 'rewrite' && isset($_SESSION['form'])) {
+    $form = $_SESSION['form'];
+} else {
+    $form = [
+        // 配列の初期化
+        'name' => '',
+        'email' => '',
+        'password' => ''
+    ];
+}
 $error = [];
+
+
 
 // フォームが送信された時のみ、フォームの中身を確認する
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,10 +26,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error['name'] = 'blank';
     }
     
-    // メールアドレスのエラーチェック
+    // メールアドレスのエラーチェック 空でないか、重複していないか
     $form['email'] = filter_input(INPUT_POST, 'email');
     if ($form['email'] === '') {
         $error['email'] = 'blank';
+    } else {
+        $db = dbconnect();
+        $stmt = $db->prepare('select count(*) from members where email=?');
+        if (!$stmt) {
+            die($db->error);
+        } 
+        $stmt->bind_param('s', $form['email']);
+        $success = $stmt->execute();
+        if (!$success) {
+            die($db->error);
+        }
+
+        // SQL文の結果を取得
+        $stmt->bind_result($cnt);
+
+        // $cntを数値で取得する
+        $stmt->fetch();
+
+        if ($cnt > 0) {
+            $error['email'] = 'duplicate';
+        }
     }
 
     // パスワードのエラーチェック
@@ -102,10 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php if (isset($error['email']) && $error['email'] === 'blank'): ?>
                             <p class="error">* メールアドレスを入力してください</p>
                         <?php endif; ?>
-                        <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
+                        <?php if (isset($error['email']) && $error['email'] === 'duplicate'): ?>
+                            <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
+                        <?php endif; ?>
                     <dt>パスワード<span class="required">必須</span></dt>
                     <dd>
-                        <input type="password" name="password" size="30" maxlength="20" value=""/>
+                        <input type="password" name="password" size="30" maxlength="20" value="<?php echo h_s($form['password']); ?>"/>
                         <?php if (isset($error['password']) && $error['password'] === 'blank'): ?>
                             <p class="error">* パスワードを入力してください</p>
                         <?php endif; ?>
@@ -127,5 +157,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-
 </html>
