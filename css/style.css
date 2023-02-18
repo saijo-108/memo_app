@@ -426,7 +426,6 @@ footer .pr {
   background: url(images/bg_head.png) bottom left repeat-x #c8a548;
   color: #fff;
   padding: 5px;
-  margin-bottom: 20px;
 }
 #wrap h1 {
   padding-left: 25px;
@@ -439,7 +438,7 @@ footer .pr {
 }
 #wrap #content {
   padding: 20px;
-  width: 720px;
+  width: auto;
   min-height: 490px;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -520,6 +519,19 @@ footer .pr {
 #wrap .msg .day a {
   font-size: 80%;
   color: #999;
+}
+
+#wrap .enter {
+  text-align: center;
+}
+
+#wrap .button {
+  height: 30px;
+  width: 100px;
+}
+
+#wrap .resis {
+  text-align: center;
 }
 
 /*その他
@@ -769,7 +781,6 @@ img.fl {
     background: url(images/bg_head.png) bottom left repeat-x #c8a548;
     color: #fff;
     padding: 5px;
-    margin-bottom: 0px;
   }
   #wrap h1 {
     padding-left: 0px;
@@ -799,6 +810,7 @@ img.fl {
   }
   #wrap dd {
     margin-bottom: 0.5em;
+    text-align: left;
   }
   #wrap .required {
     background-color: #bb1850;
@@ -857,5 +869,9 @@ img.fl {
   #wrap .msg .day a {
     font-size: 80%;
     color: #999;
+  }
+
+  #wrap .enter {
+    padding-top: 50px;
   }
 } /*# sourceMappingURL=style.css.map */
