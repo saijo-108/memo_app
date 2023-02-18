@@ -30,16 +30,16 @@
             <a href="index.php"><span>ホーム</span>Home</a>
           </li>
           <li>
-            <a href="about.html"><span>当サイトについて</span>About</a>
+            <a href="about.php"><span>当サイトについて</span>About</a>
           </li>
           <li>
-            <a href="works.html"><span>作品</span>Works</a>
+            <a href="works.php"><span>作品</span>Works</a>
           </li>
           <li>
-            <a href="link.html"><span>リンク</span>Link</a>
+            <a href="link.php"><span>リンク</span>Link</a>
           </li>
           <li>
-            <a href="contact.html"><span>お問い合わせ</span>Contact</a>
+            <a href="contact.php"><span>お問い合わせ</span>Contact</a>
           </li>
         </ul>
       </nav>
@@ -52,7 +52,7 @@
           <p>
             当ページと同じ３項目のお問い合わせフォーム（自動フォーム試用版）を簡単に使えるようにセットしています。<br />
             <span style="color: red"
-              >※当ページ（contact.html）はフォームの見本ページです。実際の自動フォームには使いませんのでご注意下さい。</span
+              >※当ページ（contact.php）はフォームの見本ページです。実際の自動フォームには使いませんのでご注意下さい。</span
             >
           </p>
           <p>
@@ -118,16 +118,16 @@
               <a href="index.php"><span>ホーム</span>Home</a>
             </li>
             <li>
-              <a href="about.html"><span>当サイトについて</span>About</a>
+              <a href="about.php"><span>当サイトについて</span>About</a>
             </li>
             <li>
-              <a href="works.html"><span>作品</span>Works</a>
+              <a href="works.php"><span>作品</span>Works</a>
             </li>
             <li>
-              <a href="link.html"><span>リンク</span>Link</a>
+              <a href="link.php"><span>リンク</span>Link</a>
             </li>
             <li>
-              <a href="contact.html"><span>お問い合わせ</span>Contact</a>
+              <a href="contact.php"><span>お問い合わせ</span>Contact</a>
             </li>
           </ul>
         </nav>
