@@ -135,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php if (isset($error['email']) && $error['email'] === 'duplicate'): ?>
                                 <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
                             <?php endif; ?>
+                        </dd>
                         <dt>パスワード<span class="required">必須</span></dt>
                         <dd>
                             <input type="password" name="password" size="30" maxlength="20" value="<?php echo h_s($form['password']); ?>"/>
