@@ -1,3 +1,34 @@
+<?php 
+session_start();
+require('share.php');
+
+if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
+  // セッションに格納されているログインデータを$nameに渡す
+  $name = $_SESSION['name'];
+  $id = $_SESSION['id'];
+  // メッセージの投稿
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = filter_input(INPUT_POST, 'title');
+    $message = filter_input(INPUT_POST, 'message');
+    $db = dbconnect();
+    $stmt = $db->prepare('insert into posts (title, message, member_id) values(?,?,?)');
+    if (!$stmt) {
+      die($db->error);
+    }
+
+    $stmt->bind_param('ssi', $title, $message, $id);
+    $success = $stmt->execute();
+    if (!$success) {
+      die($db->error);
+    }
+    
+    // 送ったメモなどのデータをクリアする
+    header('Location: index.php');
+    exit();
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -26,60 +57,70 @@
       </h1>
       <nav id="menubar-s">
         <ul>
-          <li>
-            <a href="index.php"><span>ホーム</span>Home</a>
-          </li>
-          <li>
-            <a href="about.html"><span>当サイトについて</span>About</a>
-          </li>
-          <li>
-            <a href="works.html"><span>メモ帳</span>Memos</a>
-          </li>
-          <li>
-            <a href="link.html"><span>リンク</span>Link</a>
-          </li>
-          <li>
-            <a href="contact.html"><span>お問い合わせ</span>Contact</a>
-          </li>
+          <?php if (isset($name)): ?>
+            <li>
+              <a href="about.php"><span>当サイトについて</span>About</a>
+            </li>
+            <li>
+              <a href="works.php"><span>メモ帳</span>Memos</a>
+            </li>
+            <li>
+              <a href="works.php" class="text_red"><span>ログアウト</span>Logout</a>
+            </li>
+          <?php else: ?>
+            <li>
+              <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+            </li>
+            <li>
+              <a href="login.php"><span>ログイン</span>Login</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </nav>
     </div>
 
     <div id="container">
       <div id="main">
-        <section id="new" class="box">
-          <h2 id="newinfo_hdr" class="close">
-            <span>Today's Schedule</span>本日の予定
-          </h2>
-          <dl id="newinfo">
-            <dt>2021/11/16</dt>
-            <dd>
-              lightbox用のjsファイルとcssファイルをCDNからの読み込みに変更。<span
-                class="newicon"
-                >NEW</span
-              >
-            </dd>
-            <dt>2017/07/03</dt>
-            <dd>tp_simple14公開。</dd>
-          </dl>
-                <div class="msg">
-                    <img src="member_picture/" width="48" height="48" alt=""/>
-                    <p>○○<span class="name">（○○）</span></p>
-                    <p class="day"><a href="view.php?id=">2021/01/01 00:00:00</a>
-                        [<a href="delete.php?id=" style="color: #F33;">削除</a>]
-                    </p>
-                </div>
-        </section>
+        <!-- ログインしている場合に表示する -->
+        <?php if (isset($name)): ?>
+          <section id="new" class="box">
+            <h2 id="newinfo_hdr" class="close">
+              <span>Latest Memos</span><?php echo h_s($name); ?>さんの最新のメモ
+            </h2>
+            <dl id="newinfo">
+              <dt>2021/11/16</dt>
+              <dd>
+                lightbox用のjsファイルとcssファイルをCDNからの読み込みに変更。<span
+                  class="newicon"
+                  >NEW</span
+                >
+              </dd>
+              <dt>2017/07/03</dt>
+              <dd>tp_simple14公開。</dd>
+            </dl>
+                  <div class="msg">
+                      <img src="member_picture/" width="48" height="48" alt=""/>
+                      <p>○○<span class="name">（○○）</span></p>
+                      <p class="day"><a href="view.php?id=">2021/01/01 00:00:00</a>
+                          [<a href="delete.php?id=" style="color: #F33;">削除</a>]
+                      </p>
+                  </div>
+          </section>
+        <?php endif; ?>
 
         <section class="box">
           <h2><span>Memo</span>メモ</h2>
 
-          <h3>利用規約のご案内</h3>
+          <h3>メモ帳の使い方</h3>
             <div id="content">
                 <div style="text-align: right"><a href="logout.php">ログアウト</a></div>
                 <form action="" method="post">
                     <dl>
-                        <dt>○○さん、メッセージをどうぞ</dt>
+                        <dd>
+                          <dt>タイトル</dt>
+                          <input type="text" name="title" size="35" maxlength="255" value=""/>
+                        </dd>
+                        <dt>メモの内容</dt>
                         <dd>
                             <textarea name="message" cols="50" rows="5"></textarea>
                         </dd>
@@ -106,21 +147,24 @@
         <!--PC用（801px以上端末）メニュー-->
         <nav id="menubar">
           <ul>
-            <li>
-              <a href="index.php"><span>ホーム</span>Home</a>
-            </li>
-            <li>
-              <a href="about.html"><span>当サイトについて</span>About</a>
-            </li>
-            <li>
-              <a href="works.html"><span>作品</span>Works</a>
-            </li>
-            <li>
-              <a href="link.html"><span>リンク</span>Link</a>
-            </li>
-            <li>
-              <a href="contact.html"><span>お問い合わせ</span>Contact</a>
-            </li>
+            <?php if (isset($name)): ?>
+              <li>
+                <a href="about.php"><span>当サイトについて</span>About</a>
+              </li>
+              <li>
+                <a href="works.php"><span>メモ帳</span>Memos</a>
+              </li>
+              <li>
+                <a href="works.php" class="text_red"><span>ログアウト</span>Logout</a>
+              </li>
+            <?php else: ?>
+              <li>
+                <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+              </li>
+              <li>
+                <a href="login.php"><span>ログイン</span>Login</a>
+              </li>
+            <?php endif; ?>
           </ul>
         </nav>
       </div>

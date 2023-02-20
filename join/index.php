@@ -108,52 +108,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="head">
-            <h1>会員登録</h1>
-        </div>
+    <div id="container">
+    <?php include( dirname(__FILE__) . '/../share/header.php'); ?>
+        <div id="wrap">
+            <div id="head">
+                <h1>会員登録</h1>
+            </div>
 
-        <div id="content">
-            <p>必要事項をご記入ください。</p>
-            <form action="" method="post" enctype="multipart/form-data">
-                <dl>
-                    <dt>名前<span class="required">必須</span></dt>
-                    <dd>
-                        <input type="text" name="name" size="35" maxlength="255" value="<?php echo h_s($form['name']); ?>"/>
-                        <?php if (isset($error['name']) && $error['name'] === 'blank'): ?>
-                            <p class="error">* 名前を入力してください</p>
-                        <?php endif; ?>
-                    </dd>
-                    <dt>メールアドレス<span class="required">必須</span></dt>
-                    <dd>
-                        <input type="text" name="email" size="35" maxlength="255" value="<?php echo h_s($form['email']); ?>"/>
-                        <?php if (isset($error['email']) && $error['email'] === 'blank'): ?>
-                            <p class="error">* メールアドレスを入力してください</p>
-                        <?php endif; ?>
-                        <?php if (isset($error['email']) && $error['email'] === 'duplicate'): ?>
-                            <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
-                        <?php endif; ?>
-                    <dt>パスワード<span class="required">必須</span></dt>
-                    <dd>
-                        <input type="password" name="password" size="30" maxlength="20" value="<?php echo h_s($form['password']); ?>"/>
-                        <?php if (isset($error['password']) && $error['password'] === 'blank'): ?>
-                            <p class="error">* パスワードを入力してください</p>
-                        <?php endif; ?>
-                        <?php if (isset($error['password']) && $error['password'] === 'short'): ?>
-                            <p class="error">* パスワードは4文字以上で入力してください</p>
-                        <?php endif; ?>
-                    </dd>
-                    <dt>写真など</dt>
-                    <dd>
-                        <input type="file" name="image" size="35" value=""/>
-                        <?php if (isset($error['image']) && $error['image'] === 'type'): ?>
-                            <p class="error">* 写真などは「.png」または「.jpg」の画像を指定してください</p>
-                            <p class="error">* 恐れ入りますが、画像を改めて指定してください</p>
-                        <?php endif; ?>
-                    </dd>
-                </dl>
-                <div class="enter"><input type="submit" value="入力内容を確認する"/></div>
-            </form>
+            <div id="content">
+                <p>必要事項をご記入ください。</p>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <dl>
+                        <dt>名前<span class="required">必須</span></dt>
+                        <dd>
+                            <input type="text" name="name" size="35" maxlength="255" value="<?php echo h_s($form['name']); ?>"/>
+                            <?php if (isset($error['name']) && $error['name'] === 'blank'): ?>
+                                <p class="error">* 名前を入力してください</p>
+                            <?php endif; ?>
+                        </dd>
+                        <dt>メールアドレス<span class="required">必須</span></dt>
+                        <dd>
+                            <input type="text" name="email" size="35" maxlength="255" value="<?php echo h_s($form['email']); ?>"/>
+                            <?php if (isset($error['email']) && $error['email'] === 'blank'): ?>
+                                <p class="error">* メールアドレスを入力してください</p>
+                            <?php endif; ?>
+                            <?php if (isset($error['email']) && $error['email'] === 'duplicate'): ?>
+                                <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
+                            <?php endif; ?>
+                        </dd>
+                        <dt>パスワード<span class="required">必須</span></dt>
+                        <dd>
+                            <input type="password" name="password" size="30" maxlength="20" value="<?php echo h_s($form['password']); ?>"/>
+                            <?php if (isset($error['password']) && $error['password'] === 'blank'): ?>
+                                <p class="error">* パスワードを入力してください</p>
+                            <?php endif; ?>
+                            <?php if (isset($error['password']) && $error['password'] === 'short'): ?>
+                                <p class="error">* パスワードは4文字以上で入力してください</p>
+                            <?php endif; ?>
+                        </dd>
+                        <dt>写真など</dt>
+                        <dd>
+                            <input type="file" name="image" size="35" value=""/>
+                            <?php if (isset($error['image']) && $error['image'] === 'type'): ?>
+                                <p class="error">* 写真などは「.png」または「.jpg」の画像を指定してください</p>
+                                <p class="error">* 恐れ入りますが、画像を改めて指定してください</p>
+                            <?php endif; ?>
+                        </dd>
+                    </dl>
+                    <div class="enter"><input type="submit" value="入力内容を確認する"/></div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

@@ -31,16 +31,16 @@
             <a href="index.php"><span>ホーム</span>Home</a>
           </li>
           <li>
-            <a href="about.html"><span>当サイトについて</span>About</a>
+            <a href="about.php"><span>当サイトについて</span>About</a>
           </li>
           <li>
-            <a href="works.html"><span>作品</span>Works</a>
+            <a href="works.php"><span>作品</span>Works</a>
           </li>
           <li>
-            <a href="link.html"><span>リンク</span>Link</a>
+            <a href="link.php"><span>リンク</span>Link</a>
           </li>
           <li>
-            <a href="contact.html"><span>お問い合わせ</span>Contact</a>
+            <a href="contact.php"><span>お問い合わせ</span>Contact</a>
           </li>
         </ul>
       </nav>
@@ -405,16 +405,16 @@
               <a href="index.php"><span>ホーム</span>Home</a>
             </li>
             <li>
-              <a href="about.html"><span>当サイトについて</span>About</a>
+              <a href="about.php"><span>当サイトについて</span>About</a>
             </li>
             <li>
-              <a href="works.html"><span>作品</span>Works</a>
+              <a href="works.php"><span>作品</span>Works</a>
             </li>
             <li>
-              <a href="link.html"><span>リンク</span>Link</a>
+              <a href="link.php"><span>リンク</span>Link</a>
             </li>
             <li>
-              <a href="contact.html"><span>お問い合わせ</span>Contact</a>
+              <a href="contact.php"><span>お問い合わせ</span>Contact</a>
             </li>
           </ul>
         </nav>

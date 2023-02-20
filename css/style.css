@@ -19,13 +19,11 @@ body {
   margin: 0px;
   padding: 0px;
   color: #8a827e; /*全体の文字色*/
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ",
-    Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; /*フォント種類*/
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; /*フォント種類*/
   font-size: 14px; /*文字サイズ*/
   line-height: 2; /*行間*/
   background: #cdc7b7 url(../images/bg1.png) no-repeat right bottom fixed; /*背景色、背景画像の読み込み、リピートさせず、右下に原寸大で固定配置（古いブラウザ用）*/
-  background: url(../images/bg1.png) no-repeat right bottom/40% auto fixed,
-    url(../images/bg.jpg) no-repeat center center fixed, #cdc7b7; /*背景画像の読み込み、リピートさせず、右下に配置/幅40%で固定配置,　背景壁紙の読み込み、リピートせず固定表示。背景色。*/
+  background: url(../images/bg1.png) no-repeat right bottom/40% auto fixed, url(../images/bg.jpg) no-repeat center center fixed, #cdc7b7; /*背景画像の読み込み、リピートさせず、右下に配置/幅40%で固定配置,　背景壁紙の読み込み、リピートせず固定表示。背景色。*/
   -webkit-text-size-adjust: none;
 }
 
@@ -74,7 +72,7 @@ iframe {
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
 a {
-  color: #8a867e; /*リンクテキストの色*/ /*マウスオン時の移り変わるまでの時間設定。0.5秒。*/
+  color: rgba(7, 7, 6, 0.6705882353); /*リンクテキストの色*/ /*マウスオン時の移り変わるまでの時間設定。0.5秒。*/
   transition: 0.5s; /*同上*/
 }
 
@@ -145,12 +143,7 @@ a:hover {
   padding: 3%; /*ボックス内の余白*/
   margin-bottom: 50px; /*ボックスの外（下）にあける余白*/
   background: #fff; /*背景色（古いブラウザ用）*/
-  background: rgba(
-    255,
-    255,
-    255,
-    0.4
-  ); /*背景色。255,255,255は白のことで、0.4は透明度40%の事。*/
+  background: rgba(255, 255, 255, 0.4); /*背景色。255,255,255は白のことで、0.4は透明度40%の事。*/
   border: 1px solid #fff; /*線の幅・線種・色。*/
   border-radius: 20px; /*角丸のサイズ*/
 }
@@ -195,6 +188,10 @@ a:hover {
 #sub .logo img {
   width: 80%; /*画像の幅*/
   margin-bottom: 50px; /*画像の下にあけるスペース*/
+}
+
+.text_red {
+  color: red !important;
 }
 
 /*メインメニュー
@@ -324,12 +321,7 @@ footer .pr {
   border: 1px solid #fff; /*枠線の幅、線種、色*/
   border-radius: 10px; /*角丸のサイズ*/
   background: #fff; /*背景色（古いブラウザ用）*/
-  background: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /*背景色。255,255,255は白の事で0.5が透明度50%の事。*/
+  background: rgba(255, 255, 255, 0.5); /*背景色。255,255,255は白の事で0.5が透明度50%の事。*/
   padding: 10px;
 }
 
@@ -408,16 +400,17 @@ footer .pr {
 
 /* 会員登録画面 */
 #wrap {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   padding: 15px 30px;
-  background: rgb(68 89 87 / 29%);
+  background: rgba(68, 89, 87, 0.29);
   color: #fff;
-  width: 50%;
-  height: auto;
+  /* width: 50%;
+  height: auto; */
 }
+
 #wrap #head {
   text-align: center;
   border-left: 1px solid #d4d4d4;
@@ -427,15 +420,18 @@ footer .pr {
   color: #fff;
   padding: 5px;
 }
+
 #wrap h1 {
   padding-left: 25px;
   font-size: 150%;
   font-weight: bold;
 }
+
 #wrap h2 {
   font-weight: bold;
   margin-bottom: 0.5em;
 }
+
 #wrap #content {
   padding: 20px;
   width: auto;
@@ -444,24 +440,30 @@ footer .pr {
   margin-bottom: 10px;
   font-size: 153.9%;
 }
+
 #wrap * html #content {
   height: 490px;
 }
+
 #wrap p {
   line-height: 1.2em;
   margin-bottom: 0.5em;
 }
+
 #wrap dl {
   margin-bottom: 10px;
 }
+
 #wrap dt {
   border-left: 5px solid #c5b27f;
   padding-left: 5px;
   margin-bottom: 5px;
 }
+
 #wrap dd {
   margin-bottom: 0.5em;
 }
+
 #wrap .required {
   background-color: #bb1850;
   color: #fff;
@@ -469,52 +471,64 @@ footer .pr {
   padding: 2px;
   margin-left: 10px;
 }
+
 #wrap #foot {
   width: 780px;
   text-align: right;
 }
+
 #wrap th,
 #wrap td {
   border: 1px solid #999;
   padding: 3px;
 }
+
 #wrap th {
   background-color: #c5b27f;
   color: #fff;
   font-weight: bold;
 }
+
 #wrap li {
   list-style: circle;
   margin-left: 20px;
   margin-bottom: 0.5em;
 }
+
 #wrap .paging {
   margin-top: 10px;
   text-align: center;
 }
+
 #wrap .paging li {
   display: inline;
   list-style: none;
 }
+
 #wrap .error {
   font-size: 90%;
   color: #e20000;
 }
+
 #wrap #lead {
   margin-bottom: 1em;
 }
+
 #wrap .msg {
   clear: both;
   border-top: 1px solid #ccc;
   padding: 10px 0;
 }
+
 #wrap .msg img {
   float: left;
   margin-right: 5px;
 }
+
 #wrap .msg p {
   margin: 0;
 }
+
 #wrap .msg .day,
 #wrap .msg .day a {
   font-size: 80%;
@@ -629,8 +643,8 @@ img.fl {
   }
   /*小さな端末用のロゴ*/
   #sh .logo img {
-    width: 200px; /*幅*/
-    margin: 20px 0;
+    width: 150px; /*幅*/
+    margin-top: 20px;
   }
   /*PC用ロゴとメニューを非表示にする*/
   #sub .logo,
@@ -646,12 +660,7 @@ img.fl {
     position: absolute;
     left: 5%; /*左から5%の場所に配置*/
     top: 70px; /*上から70pxの場所に配置*/
-    background: rgba(
-      255,
-      255,
-      255,
-      0.9
-    ); /*背景色。255,255,255は白の事。0.9は透明度90%の事。*/
+    background: rgba(255, 255, 255, 0.9); /*背景色。255,255,255は白の事。0.9は透明度90%の事。*/
     width: 90%; /*幅*/
     border-radius: 20px; /*角丸のサイズ*/
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /*ボックスの影*/
@@ -750,19 +759,17 @@ img.fl {
     margin: 0;
     width: 100%;
   }
-
   /* 会員登録 */
   #wrap {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 12px;
-    background: rgb(68 89 87 / 29%);
+    transform: translate(-50%, -50%); */
+    padding: 15px 30px;
+    background: rgba(68, 89, 87, 0.29);
     color: #fff;
-    text-align: center;
-    width: 88%;
-    height: auto;
+    /* width: 50%;
+    height: auto; */
   }
   #wrap #content {
     padding: 20px;
@@ -870,7 +877,6 @@ img.fl {
     font-size: 80%;
     color: #999;
   }
-
   #wrap .enter {
     padding-top: 50px;
   }
