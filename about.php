@@ -26,20 +26,20 @@
       </h1>
       <nav id="menubar-s">
         <ul>
-          <li>
+        <li>
             <a href="index.php"><span>ホーム</span>Home</a>
+          </li>
+          <li>
+              <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+          </li>
+          <li>
+            <a href="login.php"><span>ログイン</span>Login</a>
           </li>
           <li>
             <a href="about.php"><span>当サイトについて</span>About</a>
           </li>
           <li>
-            <a href="works.php"><span>作品</span>Works</a>
-          </li>
-          <li>
-            <a href="link.php"><span>リンク</span>Link</a>
-          </li>
-          <li>
-            <a href="contact.php"><span>お問い合わせ</span>Contact</a>
+            <a href="works.php"><span>メモ帳</span>Memos</a>
           </li>
         </ul>
       </nav>
@@ -246,16 +246,16 @@
               <a href="index.php"><span>ホーム</span>Home</a>
             </li>
             <li>
+                <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+            </li>
+            <li>
+              <a href="login.php"><span>ログイン</span>Login</a>
+            </li>
+            <li>
               <a href="about.php"><span>当サイトについて</span>About</a>
             </li>
             <li>
-              <a href="works.php"><span>作品</span>Works</a>
-            </li>
-            <li>
-              <a href="link.php"><span>リンク</span>Link</a>
-            </li>
-            <li>
-              <a href="contact.php"><span>お問い合わせ</span>Contact</a>
+              <a href="works.php"><span>メモ帳</span>Memos</a>
             </li>
           </ul>
         </nav>

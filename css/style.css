@@ -408,15 +408,15 @@ footer .pr {
 
 /* 会員登録画面 */
 #wrap {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   padding: 15px 30px;
   background: rgb(68 89 87 / 29%);
   color: #fff;
-  width: 50%;
-  height: auto;
+  /* width: 50%;
+  height: auto; */
 }
 #wrap #head {
   text-align: center;
@@ -629,8 +629,8 @@ img.fl {
   }
   /*小さな端末用のロゴ*/
   #sh .logo img {
-    width: 200px; /*幅*/
-    margin: 20px 0;
+    width: 150px; /*幅*/
+    margin-top: 20px;
   }
   /*PC用ロゴとメニューを非表示にする*/
   #sub .logo,
@@ -753,16 +753,15 @@ img.fl {
 
   /* 会員登録 */
   #wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 12px;
+    /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+    padding: 15px 30px;
     background: rgb(68 89 87 / 29%);
     color: #fff;
-    text-align: center;
-    width: 88%;
-    height: auto;
+    /* width: 50%;
+  height: auto; */
   }
   #wrap #content {
     padding: 20px;
