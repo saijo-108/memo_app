@@ -6,11 +6,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   // セッションに格納されているログインデータを$nameに渡す
   $name = $_SESSION['name'];
   $id = $_SESSION['id'];
+
+  $db = dbconnect();
+
   // メッセージの投稿
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = filter_input(INPUT_POST, 'title');
     $message = filter_input(INPUT_POST, 'message');
-    $db = dbconnect();
     $stmt = $db->prepare('insert into posts (title, message, member_id) values(?,?,?)');
     if (!$stmt) {
       die($db->error);
@@ -84,27 +86,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         <!-- ログインしている場合に表示する -->
         <?php if (isset($name)): ?>
           <section id="new" class="box">
-            <h2 id="newinfo_hdr" class="close">
+            <h2 id="newinfo_hdr" >
               <span>Latest Memos</span><?php echo h_s($name); ?>さんの最新のメモ
             </h2>
+            <?php $stmt = $db->prepare('select p.id, p.member_id, p.title, p.message, p.created, m.name from posts p, members m where m.id=p.member_id order by id desc limit 3');
+              if (!$stmt) {
+                die($db->error);
+              }
+              $success = $stmt->execute();
+              if (!$success) {
+                die($db->error);
+              }
+              $stmt->bind_result($id, $member_id, $title, $message, $created, $name);
+              while ($stmt->fetch()):
+            ?>
             <dl id="newinfo">
-              <dt>2021/11/16</dt>
+              <dt><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?>：</dt>
               <dd>
-                lightbox用のjsファイルとcssファイルをCDNからの読み込みに変更。<span
-                  class="newicon"
-                  >NEW</span
-                >
+                <?php echo h_s($title); ?>
               </dd>
-              <dt>2017/07/03</dt>
-              <dd>tp_simple14公開。</dd>
             </dl>
-                  <div class="msg">
-                      <img src="member_picture/" width="48" height="48" alt=""/>
-                      <p>○○<span class="name">（○○）</span></p>
-                      <p class="day"><a href="view.php?id=">2021/01/01 00:00:00</a>
-                          [<a href="delete.php?id=" style="color: #F33;">削除</a>]
-                      </p>
-                  </div>
+            <?php endwhile; ?>
           </section>
         <?php endif; ?>
 
@@ -187,11 +189,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
     <!--/container-->
 
     <!--更新情報の開閉処理条件設定　800px以下-->
-    <script>
-      if (OCwindowWidth() <= 800) {
-        open_close("newinfo_hdr", "newinfo");
-      }
-    </script>
 
     <!--メニューの３本バー-->
     <div id="menubar_hdr" class="close">
