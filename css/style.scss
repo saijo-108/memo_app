@@ -275,20 +275,16 @@ footer .pr {
 #new dl {
   padding-left: 20px;
   margin-bottom: 20px;
-  height: 140px; /*高さ。これを超えるとスクロールバーが出てiframe風になる。全部表示させておきたいならこの行と下の１行を削除。*/
-  overflow: auto;
 }
 
 /*日付設定*/
 #new dt {
-  font-weight: bold; /*太字にする設定。標準がいいならこの行削除。*/
   float: left;
-  width: 8em;
 }
 
 /*記事設定*/
 #new dd {
-  padding-left: 8em;
+  font-weight: bold; /*太字にする設定。標準がいいならこの行削除。*/
 }
 
 /*テーブル ta1
@@ -814,6 +810,7 @@ img.fl {
   #wrap dd {
     margin-bottom: 0.5em;
     text-align: left;
+    overflow: hidden;
   }
   #wrap .required {
     background-color: #bb1850;
