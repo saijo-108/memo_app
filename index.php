@@ -104,7 +104,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
             <dl id="newinfo">
               <dt><a href="view.php?id=<?php echo h_s($id); ?>"><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?></a>：</dt>
               <dd>
-                <?php echo h_s($title); ?>  [<a href="delete.php?id=" style="color: #F33;">削除</a>]
+                <?php echo h_s($title); ?>  [<a href="delete.php?id=<?php echo h_s($id); ?>" style="color: #F33;">削除</a>]
               </dd>
             </dl>
             <?php endwhile; ?>
