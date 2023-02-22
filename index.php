@@ -67,7 +67,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
               <a href="works.php"><span>メモ帳</span>Memos</a>
             </li>
             <li>
-              <a href="works.php" class="text_red"><span>ログアウト</span>Logout</a>
+              <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
             </li>
           <?php else: ?>
             <li>
@@ -116,7 +116,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
 
           <h3>メモ帳の使い方</h3>
             <div id="content">
-                <div style="text-align: right"><a href="logout.php">ログアウト</a></div>
                 <form action="" method="post">
                     <dl>
                         <dd>
@@ -158,7 +157,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
                 <a href="works.php"><span>メモ帳</span>Memos</a>
               </li>
               <li>
-                <a href="works.php" class="text_red"><span>ログアウト</span>Logout</a>
+                <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
               </li>
             <?php else: ?>
               <li>
