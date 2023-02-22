@@ -43,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
       name="keywords"
       content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５"
     />
-    <link rel="stylesheet" href="css/style.scss" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/openclose.js"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -89,10 +89,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
             <h2 id="newinfo_hdr" >
               <span>Latest Memos</span><?php echo h_s($name); ?>さんの最新のメモ
             </h2>
-            <?php $stmt = $db->prepare('select p.id, p.member_id, p.title, p.message, p.created, m.name from posts p, members m where m.id=p.member_id order by id desc limit 3');
+            <?php $stmt = $db->prepare('select p.id, p.member_id, p.title, p.message, p.created, m.name from posts p, members m where m.id=p.member_id and p.member_id=? order by id desc limit 3');
               if (!$stmt) {
                 die($db->error);
               }
+              $stmt->bind_param('i', $id);
               $success = $stmt->execute();
               if (!$success) {
                 die($db->error);
@@ -101,9 +102,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
               while ($stmt->fetch()):
             ?>
             <dl id="newinfo">
-              <dt><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?>：</dt>
+              <dt><a href="view.php?id=<?php echo h_s($id); ?>"><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?></a>：</dt>
               <dd>
-                <?php echo h_s($title); ?>
+                <?php echo h_s($title); ?>  [<a href="delete.php?id=" style="color: #F33;">削除</a>]
               </dd>
             </dl>
             <?php endwhile; ?>

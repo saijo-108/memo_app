@@ -814,6 +814,7 @@ img.fl {
   #wrap dd {
     margin-bottom: 0.5em;
     text-align: left;
+    overflow: hidden;
   }
   #wrap .required {
     background-color: #bb1850;

@@ -1,31 +1,58 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?php 
+session_start();
+require('share.php');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ひとこと掲示板</title>
+if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
+  // セッションに格納されているログインデータを$nameに渡す
+  $name = $_SESSION['name'];
+  $id = $_SESSION['id'];
 
-    <link rel="stylesheet" href="css/style.css"/>
-</head>
+  $db = dbconnect();
+}
+
+// URLパラメータをチェックする
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+// URLパラメータが指定されていなかったらindex.phpに戻る
+if (!$id) {
+    header('Location: index.php');
+    exit();
+}
+?>
 
 <body>
-<div id="wrap">
-    <div id="head">
-        <h1>ひとこと掲示板</h1>
-    </div>
-    <div id="content">
-        <p>&laquo;<a href="index.php">一覧にもどる</a></p>
-        <div class="msg">
-            <img src="member_picture/" width="48" height="48" alt=""/>
-            <p>○○<span class="name">（○○）</span></p>
-            <p class="day"><a href="view.php?id=">2021/01/01 00:00:00</a>
-                [<a href="delete.php?id=" style="color: #F33;">削除</a>]
-            </p>
+<?php include( dirname(__FILE__) . '/share/header.php'); ?>
+    <div id="container">
+        <div id="wrap">
+            <div id="head">
+                <h1>ひとこと掲示板</h1>
+            </div>
+            <div id="content">
+                <p>&laquo;<a href="index.php">一覧にもどる</a></p>
+                    <?php $stmt = $db->prepare('select p.id, p.member_id, p.title, p.message, p.created, m.name from posts p, members m where p.id=? and m.id=p.member_id order by id');
+                    if (!$stmt) {
+                        die($db->error);
+                    }
+                    $stmt->bind_param('i', $id);
+                    $success = $stmt->execute();
+                    if (!$success) {
+                        die($db->error);
+                    }
+                    $stmt->bind_result($id, $member_id, $title, $message, $created, $name);
+                    if ($stmt->fetch()): ?>
+                        <dl id="newinfo">
+                        <dt><a href="view.php?id="><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?></a>：</dt>
+                        <dd>
+                            <?php echo h_s($title); ?>  [<a href="delete.php?id=" style="color: #F33;">削除</a>]
+                        </dd>
+                        </dl>
+                    <?php else: ?>
+                        <p>その投稿は削除されたか、URLが間違えています</p>
+                    <?php endif; ?>
+            </div>
         </div>
-        <p>その投稿は削除されたか、URLが間違えています</p>
     </div>
+    <?php include( dirname(__FILE__) . '/share/footer.php'); ?>
 </div>
 </body>
 
