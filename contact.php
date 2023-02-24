@@ -30,7 +30,7 @@
             <a href="index.php"><span>ホーム</span>Home</a>
           </li>
           <li>
-            <a href="about.php"><span>当サイトについて</span>About</a>
+            <a href="content/about.php"><span>当サイトについて</span>About</a>
           </li>
           <li>
             <a href="works.php"><span>作品</span>Works</a>
@@ -118,7 +118,7 @@
               <a href="index.php"><span>ホーム</span>Home</a>
             </li>
             <li>
-              <a href="about.php"><span>当サイトについて</span>About</a>
+              <a href="content/about.php"><span>当サイトについて</span>About</a>
             </li>
             <li>
               <a href="works.php"><span>作品</span>Works</a>

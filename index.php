@@ -59,12 +59,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
       </h1>
       <nav id="menubar-s">
         <ul>
+            <li>
+              <a href="content/about.php"><span>当サイトについて</span>About</a>
+            </li>
           <?php if (isset($name)): ?>
             <li>
-              <a href="about.php"><span>当サイトについて</span>About</a>
-            </li>
-            <li>
-              <a href="works.php"><span>メモ帳</span>Memos</a>
+              <a href="content/works.php"><span>メモ帳</span>Memos</a>
             </li>
             <li>
               <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
@@ -149,12 +149,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         <!--PC用（801px以上端末）メニュー-->
         <nav id="menubar">
           <ul>
+              <li>
+                <a href="content/about.php"><span>当サイトについて</span>About</a>
+              </li>
             <?php if (isset($name)): ?>
               <li>
-                <a href="about.php"><span>当サイトについて</span>About</a>
-              </li>
-              <li>
-                <a href="works.php"><span>メモ帳</span>Memos</a>
+                <a href="content/works.php"><span>メモ帳</span>Memos</a>
               </li>
               <li>
                 <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
