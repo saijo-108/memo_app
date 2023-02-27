@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('share.php');
+require('views/share/share.php');
 $error = [];
 $email = '';
 $password = '';
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <body>
     <div id="container">
-    <?php include( dirname(__FILE__) . '/share/header.php'); ?>
+    <?php include( dirname(__FILE__) . '/views/share/header.php'); ?>
         <div id="wrap">
             <div id="head">
                 <h1>ログインする</h1>
@@ -81,6 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
         </div>
-    <?php include( dirname(__FILE__) . '/share/footer.php'); ?>
+    <?php include( dirname(__FILE__) . '/views/share/footer.php'); ?>
     </div>
 </body>

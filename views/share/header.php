@@ -31,19 +31,19 @@
             <a href="/memo_app/index.php"><span>ホーム</span>Home</a>
           </li>
           <li>
-            <a href="/memo_app/content/about.php"><span>当サイトについて</span>About</a>
+            <a href="/memo_app/views/content/about.php"><span>当サイトについて</span>About</a>
           </li>
           <!-- ログインしている時表示するもの -->
           <?php if (isset($name)): ?>
             <li>
-              <a href="/memo_app/content/works.php"><span>メモ帳</span>Memos</a>
+              <a href="/memo_app/views/content/works.php"><span>メモ帳</span>Memos</a>
             </li>
             <li>
               <a href="/memo_app/logout.php" class="text_red"><span>ログアウト</span>Logout</a>
             </li>
           <?php else: ?>
             <li>
-                <a href="/memo_app/join/index.php"><span>新規登録</span>Sign Up</a>
+                <a href="/memo_app/views/join/index.php"><span>新規登録</span>Sign Up</a>
             </li>
             <li>
               <a href="/memo_app/login.php"><span>ログイン</span>Login</a>
@@ -69,18 +69,18 @@
             <a href="/memo_app/index.php"><span>ホーム</span>Home</a>
           </li>
           <li>
-            <a href="/memo_app/content/about.php"><span>当サイトについて</span>About</a>
+            <a href="/memo_app/views/content/about.php"><span>当サイトについて</span>About</a>
           </li>
           <?php if (isset($name)): ?>
             <li>
-              <a href="/memo_app/content/works.php"><span>メモ帳</span>Memos</a>
+              <a href="/memo_app/views/content/works.php"><span>メモ帳</span>Memos</a>
             </li>
             <li>
               <a href="/memo_app/logout.php" class="text_red"><span>ログアウト</span>Logout</a>
             </li>
           <?php else: ?>
             <li>
-                <a href="/memo_app/join/index.php"><span>新規登録</span>Sign Up</a>
+                <a href="/memo_app/views/join/index.php"><span>新規登録</span>Sign Up</a>
             </li>
             <li>
               <a href="/memo_app/login.php"><span>ログイン</span>Login</a>

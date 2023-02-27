@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('share.php');
+require('views/share/share.php');
 
 if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   // セッションに格納されているログインデータを$nameに渡す
@@ -21,7 +21,7 @@ if (!$id) {
 ?>
 
 <body>
-<?php include( dirname(__FILE__) . '/share/header.php'); ?>
+<?php include( dirname(__FILE__) . '/views/share/header.php'); ?>
     <div id="container">
         <div id="wrap">
             <div id="head">
@@ -52,7 +52,7 @@ if (!$id) {
             </div>
         </div>
     </div>
-    <?php include( dirname(__FILE__) . '/share/footer.php'); ?>
+    <?php include( dirname(__FILE__) . '/views/share/footer.php'); ?>
 </div>
 </body>
 

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('../share.php');
+require('../share/share.php');
 
 if (isset($_SESSION['form'])) {
 	$form = $_SESSION['form'];
@@ -36,19 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	header('Location: thanks.php');
 }
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>会員登録</title>
-
-	<link rel="stylesheet" href="../css/style.css" />
-</head>
-
 <body>
+<div id="container">
+<?php include( dirname(__FILE__) . '/../share/header.php'); ?>
 	<div id="wrap">
 		<div id="head">
 			<h1>会員登録</h1>
@@ -74,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				<div class="resis"><input type="submit" value="登録する" class="button" /> | <a href="index.php?action=rewrite">書き直す</a></div>
 			</form>
 		</div>
-
 	</div>
+	<?php include( dirname(__FILE__) . '/../share/footer.php'); ?>
 </body>
 
 </html>

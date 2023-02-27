@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('share.php');
+require('views/share/share.php');
 
 if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   // セッションに格納されているログインデータを$nameに渡す

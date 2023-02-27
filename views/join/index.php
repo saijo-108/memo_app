@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('../share.php');
+require('../share/share.php');
 
 // 書き直し(check.php)から戻ってきた場合、$formにはデータを入れておく。それ以外は初期化する。
 if (isset($_GET['action']) && $_GET['action'] === 'rewrite' && isset($_SESSION['form'])) {
@@ -159,6 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
         </div>
+        <?php include( dirname(__FILE__) . '/../share/footer.php'); ?>
     </div>
 </body>
 </html>

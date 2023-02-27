@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('share.php');
+require('views/share/share.php');
 
 if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   // セッションに格納されているログインデータを$nameに渡す
@@ -60,18 +60,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
       <nav id="menubar-s">
         <ul>
             <li>
-              <a href="content/about.php"><span>当サイトについて</span>About</a>
+              <a href="views/content/about.php"><span>当サイトについて</span>About</a>
             </li>
           <?php if (isset($name)): ?>
             <li>
-              <a href="content/works.php"><span>メモ帳</span>Memos</a>
+              <a href="views/content/works.php"><span>メモ帳</span>Memos</a>
             </li>
             <li>
               <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
             </li>
           <?php else: ?>
             <li>
-              <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+              <a href="views/join/index.php"><span>新規登録</span>Sign Up</a>
             </li>
             <li>
               <a href="login.php"><span>ログイン</span>Login</a>
@@ -150,18 +150,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         <nav id="menubar">
           <ul>
               <li>
-                <a href="content/about.php"><span>当サイトについて</span>About</a>
+                <a href="views/content/about.php"><span>当サイトについて</span>About</a>
               </li>
             <?php if (isset($name)): ?>
               <li>
-                <a href="content/works.php"><span>メモ帳</span>Memos</a>
+                <a href="views/content/works.php"><span>メモ帳</span>Memos</a>
               </li>
               <li>
                 <a href="logout.php" class="text_red"><span>ログアウト</span>Logout</a>
               </li>
             <?php else: ?>
               <li>
-                <a href="join/index.php"><span>新規登録</span>Sign Up</a>
+                <a href="views/join/index.php"><span>新規登録</span>Sign Up</a>
               </li>
               <li>
                 <a href="login.php"><span>ログイン</span>Login</a>

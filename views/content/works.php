@@ -353,5 +353,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         </p>
       </section>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js"></script>
+      <?php include( dirname(__FILE__) . '/../share/footer.php'); ?>
     </div>
 </body>
