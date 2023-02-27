@@ -28,6 +28,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
     header('Location: index.php');
     exit();
   }
+} else {
+  header('Location: login.php');
+  exit();
 }
 ?>
 
@@ -36,12 +39,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>ひとことメモ帳</title>
+    <title>My Memo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="簡易的なメモ帳のアプリです。" />
     <meta
-      name="keywords"
-      content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５"
+      name="simple memo"
+      content="簡易的なメモを残せるサービス"
     />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/openclose.js"></script>
@@ -55,13 +58,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
     <!--小さな端末用（800px以下端末）のロゴとメニュー-->
     <div id="sh">
       <h1 class="logo">
-        <a href="index.php"><img src="images/logo.png" alt="Sample Site" /></a>
+        <a href="index.php"><img src="images/logo9.png" alt="Sample Site" /></a>
       </h1>
       <nav id="menubar-s">
         <ul>
-            <li>
-              <a href="views/content/about.php"><span>当サイトについて</span>About</a>
-            </li>
           <?php if (isset($name)): ?>
             <li>
               <a href="views/content/works.php"><span>メモ帳</span>Memos</a>
@@ -74,7 +74,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
               <a href="views/join/index.php"><span>新規登録</span>Sign Up</a>
             </li>
             <li>
-              <a href="login.php"><span>ログイン</span>Login</a>
+              <a href="login.php" class="text_blue"><span>ログイン</span>Login</a>
             </li>
           <?php endif; ?>
         </ul>
@@ -104,7 +104,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
             <dl id="newinfo">
               <dt><a href="view.php?id=<?php echo h_s($id); ?>"><?php echo h_s(date('Y年m月d日 H:h', strtotime($created))); ?></a>：</dt>
               <dd>
-                <?php echo h_s($title); ?>  [<a href="delete.php?id=<?php echo h_s($id); ?>" style="color: #F33;">削除</a>]
+                タイトル：<a><?php echo h_s($title); ?></a>
               </dd>
             </dl>
             <?php endwhile; ?>
@@ -114,7 +114,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         <section class="box">
           <h2><span>Memo</span>メモ</h2>
 
-          <h3>メモ帳の使い方</h3>
+          <h3>新しいメモを残す</h3>
             <div id="content">
                 <form action="" method="post">
                     <dl>
@@ -142,16 +142,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         <!--PC用（801px以上端末）ロゴ-->
         <h1 class="logo">
           <a href="index.php"
-            ><img src="images/logo.png" alt="Sample Site"
+            ><img src="images/logo9.png" alt="Sample Site"
           /></a>
         </h1>
 
         <!--PC用（801px以上端末）メニュー-->
         <nav id="menubar">
           <ul>
-              <li>
-                <a href="views/content/about.php"><span>当サイトについて</span>About</a>
-              </li>
             <?php if (isset($name)): ?>
               <li>
                 <a href="views/content/works.php"><span>メモ帳</span>Memos</a>
@@ -164,7 +161,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
                 <a href="views/join/index.php"><span>新規登録</span>Sign Up</a>
               </li>
               <li>
-                <a href="login.php"><span>ログイン</span>Login</a>
+                <a href="login.php" class="text_blue"><span>ログイン</span>Login</a>
               </li>
             <?php endif; ?>
           </ul>

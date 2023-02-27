@@ -25,7 +25,7 @@ if (!$id) {
     <div id="container">
         <div id="wrap">
             <div id="head">
-                <h1>ひとこと掲示板</h1>
+                <h1>My Memo</h1>
             </div>
             <div id="content">
                 <p>&laquo;<a href="index.php">一覧にもどる</a></p>

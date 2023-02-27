@@ -201,6 +201,10 @@ a:hover {
   color: red !important;
 }
 
+.text_blue {
+  color: #09b3d3 !important;
+}
+
 /*メインメニュー
 ---------------------------------------------------------------------------*/
 /*メニューブロック*/
@@ -366,6 +370,16 @@ footer .pr {
 /*画像*/
 .ta2 img {
   vertical-align: bottom;
+}
+
+// メモ帳
+
+#newinfo2 {
+  margin-bottom: 30px;
+}
+
+.memos {
+  overflow-wrap: break-word;
 }
 
 /*PAGE TOP設定

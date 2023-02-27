@@ -8,7 +8,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   $id = $_SESSION['id'];
   $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
   if (!$post_id) {
-    header('Location: index.php');
+    header('Location: views/content/works.php');
     exit();
   }
 
@@ -26,6 +26,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
 }
 
 
-header('Location: index.php');
+header('Location: views/content/works.php');
 exit();
 ?>
